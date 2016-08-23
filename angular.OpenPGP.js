@@ -6,11 +6,11 @@
 		return new OpenPGP($window);
 	}]);
 
-	/*module.provider('$pgpProvider', function () {
-        this.$get = ["$window", function urlServiceFactory($window) {
-            return urlServiceFactory($window);
+	module.provider('$pgpProvider', function () {
+        this.$get = ["$window", function OpenPgpFactory($window) {
+            return OpenPGP($window);
         }];
-    });*/
+    });
 
     function OpenPGP($window) {
     	var openpgp = $window.openpgp;
@@ -18,15 +18,15 @@
 			encrypt: function(message, pubkeys) {
 				var options = {
 				    data: message,
-				    publicKeys: openpgp.key.readArmored(pubkeys).keys  // for encryption
+				    publicKeys: openpgp.key.readArmored(pubkeys).keys
 				};
 
 				return openpgp.encrypt(options);
 			},
 			decrypt: function(message, privkey, passphrase) {
 				var options = {
-				    message: openpgp.message.readArmored(message),     	 // parse armored message
-				    privateKey: openpgp.key.readArmored(privkey).keys[0] // for decryption
+				    message: openpgp.message.readArmored(message),
+				    privateKey: openpgp.key.readArmored(privkey).keys[0]
 				};
 				if (passphrase && passphrase.length>0) {
 					var key = openpgp.key.readArmored(privkey);
