@@ -8,7 +8,7 @@
 
 	module.provider('$pgpProvider', function () {
         this.$get = ["$window", function OpenPgpFactory($window) {
-            return OpenPGP($window);
+            return new OpenPGP($window);
         }];
     });
 
