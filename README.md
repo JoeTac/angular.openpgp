@@ -1,0 +1,1 @@
+This is a simplified wrapper for openpgpjs/openpgpjs
