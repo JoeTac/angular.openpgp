@@ -22,7 +22,8 @@ angular.module("SampleModule", ["OpenPGP"])
     		  $scope.$apply(function() {
     			  $scope.pubkey = result.publicKeyArmored;
     				$scope.privkey = result.privateKeyArmored;
-    			},
+    			});
+    		},
     		function(error) {
       	  $log.error(error);
       	});
