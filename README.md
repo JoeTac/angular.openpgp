@@ -18,15 +18,14 @@ angular.module("SampleModule", ["OpenPGP"])
       $scope.generateKeys = function() {
         //keySize should be increased. Only using smaller size for testing
         $pgp.keygen($scope.name, $scope.email, $scope.passphrase, 512) 
-    					.then(function(result) {
-    						$scope.$apply(function() {
-    							$scope.pubkey = result.publicKeyArmored;
-    							$scope.privkey = result.privateKeyArmored;
-    						});
-    					})
-    					.catch(function(error) {
-    						$log.error(error);
-    					});
+    		.then(function(result) {
+    		  $scope.$apply(function() {
+    			  $scope.pubkey = result.publicKeyArmored;
+    				$scope.privkey = result.privateKeyArmored;
+    			},
+    		function(error) {
+      	  $log.error(error);
+      	});
       }
 }]);
 </pre>
